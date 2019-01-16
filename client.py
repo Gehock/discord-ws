@@ -54,9 +54,25 @@ class Bot():
             print("<", message)
             data = json.loads(message)
             if data["op"] == op.DISPATCH:
-                if data["t"] == "READY":
+                self.sequence = int(data["s"])
+                event_type = data["t"]
+                if event_type == "READY":
                     self.session_id = data["d"]["session_id"]
                     print("Got session ID:", self.session_id)
+                elif event_type == "MESSAGE_CREATE":
+                    message = data["d"]["content"]
+                    if message.startswith("!edit"):
+                        print("Edit")
+                        parts = message.split()
+                        if len(parts) != 2:
+                            print("Command error")
+                        else:
+                            id = parts[1]
+                            print("id", id)
+
+                        # await self.send_message("Editing")
+
+    # async def send_message(self, message):
 
     async def send(self, opcode, payload):
         data = self.opcode(opcode, payload)
