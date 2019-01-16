@@ -22,16 +22,12 @@ class Bot():
                     "$browser": "disco",
                     "$device": "disco"
                 },
-                "compress": False,
-                "large_threshold": 250,
-                "shard": [1, 10],
                 "presence": {
                     "game": {
                         "name": "with handpicked bugs",
                         "type": 0
                     },
-                    "status": "dnd",
-                    "since": 91879201,
+                    "status": "online",
                     "afk": False
                 }
             }
